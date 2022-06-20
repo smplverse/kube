@@ -27,7 +27,13 @@ spec:
   tls:
     - hosts:
         - metadata.smplverse.xyz
-      secretName: ingress-tls
+      secretName: metadata-tls
+    - hosts:
+        - api.smplverse.xyz
+      secretName: api-tls
+    - hosts:
+        - smplverse.xyz
+      secretName: interface-tls
   rules:
     - host: metadata.smplverse.xyz
       http:
