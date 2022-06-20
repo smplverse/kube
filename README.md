@@ -33,11 +33,19 @@ service-specific configs.
      ingress-nginx-controller
    ```
 
-3. Add A-Record to the domain from the Ingress manifest (in this case
-   `metadata.smplvserse.xyz`) pointing to the IPv4 of the Ingress
+3. Create A-Records for all of the subdomains (`api.smplverse.xyz`,
+   `metadata.smplverse.xyz`, `smplverse.xyz`) to point to the Ingress.
 
 4. Install cert-manager
 
    ```sh
    kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.8.0/cert-manager.yaml
    ```
+
+5. Apply the configurations
+
+   ```sh
+   kubectl apply -f ingress.yaml -f api.yaml -f metadata.yaml -f interface.yaml
+   ```
+
+## License MIT
