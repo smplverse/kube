@@ -1,0 +1,41 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+ name: letsencrypt-prod
+spec:
+ acme:
+   server: https://acme-v02.api.letsencrypt.org/directory
+   email: piotr.jp.ostrowski@gmail.com
+   privateKeySecretRef:
+     name: letsencrypt-prod
+   solvers:
+   - http01:
+       ingress:
+         class: nginx
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-smplverse
+  namespace: default
+  annotations:
+    ingress.kubernetes.io/ssl-redirect: "false"
+    cert-manager.io/issuer: letsencrypt-prod
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - metadata.smplverse.xyz
+      secretName: ingress-smplverse-tls
+  rules:
+    - host: metadata.smplverse.xyz
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: metadata-api-port
+                port:
+                  number: 80
