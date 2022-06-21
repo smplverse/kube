@@ -28,8 +28,11 @@ spec:
       spec:
         containers:
           - name: api
-            image: hello-world
-            # TODO add env, this env file is 10 lines
+            image: piotrostr/api
+            envFrom:
+              - secretRef:
+                  name: api-secrets
+                  optional: False
             ports:
               - containerPort: 5000
             # volumes will also be needed

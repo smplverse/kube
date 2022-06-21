@@ -13,6 +13,10 @@ service-specific configs.
   kubectl create secret generic metadata-key --from-literal METADATA_API_KEY=[secret]
   ```
 
+  ```bash
+  kubectl create secret generic api-secrets --from-env-file .env
+  ```
+
 ## Deploy to the cluster
 
 1. Install ingress
