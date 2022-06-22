@@ -30,3 +30,13 @@ spec:
         image: piotrostr/interface
         ports:
         - containerPort: 3000
+        resources:
+          requests:
+            cpu: "250m"
+            memory: "64Mi"
+          limits:
+            cpu: "500m"
+            memory: "256Mi"
+      imagePullSecrets:
+        - name: regcred
+      restartPolicy: Always
