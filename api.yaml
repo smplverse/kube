@@ -20,7 +20,7 @@ spec:
   selector:
     matchLabels:
       name: api
-  replicas: 3
+  replicas: 5
   template:
       metadata:
         labels:
