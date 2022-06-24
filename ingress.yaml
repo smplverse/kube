@@ -46,16 +46,6 @@ spec:
                 name: metadata-port
                 port:
                   number: 80
-    - host: api.smplverse.xyz
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: api-port
-                port:
-                  number: 5000
     - host: smplverse.xyz
       http:
         paths:
