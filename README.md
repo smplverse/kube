@@ -52,4 +52,8 @@ service-specific configs.
    kubectl apply -f ingress.yaml -f api.yaml -f metadata.yaml -f interface.yaml
    ```
 
+_I ended up making the api a standalone deployment since I don't have
+linode-lke gpu access and it is to late before launch to mess with migrating to
+gke/eks, so api can be skipped_
+
 ## License MIT
